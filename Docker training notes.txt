@@ -1,0 +1,96 @@
+Microservices
+Technical Debt
+Docker arch  client Docker host Registry
+Devsecops
+CI CD
+docker compose installation and examples
+Docker swarms-->cluster of machine which Docker (Master and other Nodes)-->Autohealing/scale up/ -->20 machines
+Kubernetes -->1000 machines
+Container Orchestration (Docker swarm, Mesos, Kubernetes)
+Replication controller -->More than 1 pod with same containers
+MiniKube
+
+1e7953f81b8b--> alpine1 container id
+docker network inspect d779e9261d9f --> bridge type network id
+da94b6e9cacb--> alpine2 container id
+ping 172.17.0.4 (alpine2 ip address)
+be2ad3cd9ae6
+
+
+docker netwok rm <network_id>
+docker-compose scale database=4
+
+1. 
+web:
+  image: nginx
+  ports:
+  - 9090:80
+
+database:
+  image: redis
+=======================================================
+wordpress
+mariadb
+php
+
+
+2.
+wordpress:
+ image: wordpress
+ links:
+ - wordpress_db:mysql
+ ports:
+ - "9090:80"
+
+wordpress_db:
+ image: mariadb
+ environment:
+  MYSQL_ROOT_PASSWORD: root123
+ ports:
+ - "9091:80"
+
+phpmyadmin:
+ image: corbinu/docker-phpmyadmin
+ links:
+ - wordpress_db:mysql
+ ports:
+ - "9014:80"
+ environment:
+  MYSQL_ROOT_USERNAME: root
+  MYSQL_ROOT_PASSWORD: root123
+
+
+
+curl -Lo C:/Users/gitsingh/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v18.09.1-rc1/boot2docker.iso docker-machine create --driver virtualbox worker3
+curl -Lo ~/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v1.9.1/boot2docker.iso
+docker-machine create --driver virtualbox worker3
+
+
+10.77.249.126
+
+
+
+ docker swarm join --token SWMTKN-1-3rufu1e8udll4kcow4cnr5ilv4o8t0p6hbv2kb8m4f7tf2hyev-1osvvlgis1cs8rx4grtrhsfm6 10.77.249.126:2377
+ docker swarm join --token SWMTKN-1-1wfgu74wx46no0jflowjc8re9z705wlg7gb261t15gv8r0lzuk-dxdkzrtmvom3d4c909g0v9xe8 10.77.249.146:2377
+
+docker swarm init --advertise-addr 192.168.1.8  (For master node)
+
+docker-machine ssh worker2
+docker swarm join --token SWMTKN-1-3ezmricoatothytgvepeybiaysro31n6mb4wxkunw2omxprt6c-94essr06xg5gityu2pf4mfi9w 10.77.249.126:2377
+
+=============================
+go to downloads folder under d: in cmd and type below command to run the exe file  -->cd D:\Users\gitsingh\Downloads
+.\minikube-windows-amd64.exe start
+
+
+
+.\minikube-windows-amd64.exe start --kubernetes-version="v1.4.0" --vm-driver="virtualbox" --show-libmachine-logs --alsologtostderr
+
+
+
+
+
+
+
+
+
